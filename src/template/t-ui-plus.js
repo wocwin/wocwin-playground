@@ -1,0 +1,38 @@
+import { getCurrentInstance } from 'vue'
+import TuiPlus from 't-ui-plus'
+import ElementPlus from 'element-plus'
+
+const version = '2.7.8'
+
+const createLink = (resolve, reject, href) => {
+  const link = document.createElement('link')
+  link.rel = 'stylesheet'
+  link.href = href
+  link.addEventListener('load', resolve)
+  link.addEventListener('error', reject)
+  document.body.append(link)
+}
+
+let installed = false
+await loadStyle()
+await loadEPStyle()
+
+export function setupTuiPlus() {
+  if (installed) return
+  const instance = getCurrentInstance()
+  instance.appContext.app.use(TuiPlus)
+  instance.appContext.app.use(ElementPlus)
+  installed = true
+}
+
+export function loadStyle() {
+  return new Promise((resolve, reject) => {
+    createLink(resolve, reject, 'https://unpkg.com/t-ui-plus/index.css')
+  })
+}
+
+export function loadEPStyle() {
+  return new Promise((resolve, reject) => {
+    createLink(resolve, reject, `https://unpkg.com/element-plus@${version}/dist/index.css`)
+  })
+}
