@@ -2,10 +2,10 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 // import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
-// import viteCompression from 'vite-plugin-compression'
+import viteCompression from 'vite-plugin-compression'
 
 // 生产环境判断
-// const isEnvProduction = process.env.NODE_ENV === 'production'
+const isEnvProduction = process.env.NODE_ENV === 'production'
 
 export default defineConfig({
   base: "/wocwin-playground/",
@@ -15,7 +15,7 @@ export default defineConfig({
     port: 3332
   },
   plugins: [
-    vue()
+    vue(),
     // vue({
     //   script: {
     //     defineModel: true,
@@ -28,13 +28,13 @@ export default defineConfig({
     // chunkSplitPlugin({
     //   strategy: 'single-vendor'
     // }),
-    // isEnvProduction
-    //   ? viteCompression({
-    //       filter: /\.(js|css)$/i,
-    //       // algorithm: 'brotliCompress',
-    //       threshold: 10 * 1024 // 10kb
-    //     })
-    //   : undefined
+    isEnvProduction
+      ? viteCompression({
+          filter: /\.(js|css)$/i,
+          // algorithm: 'brotliCompress',
+          threshold: 10 * 1024 // 10kb
+        })
+      : undefined
   ],
   define: {
     __VUE_PROD_DEVTOOLS__: JSON.stringify(true)
