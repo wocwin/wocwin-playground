@@ -8,6 +8,7 @@ import viteCompression from 'vite-plugin-compression'
 const isEnvProduction = process.env.NODE_ENV === 'production'
 
 export default defineConfig({
+  base: "/wocwin-playground/",
   server: {
     port: 3332
   },

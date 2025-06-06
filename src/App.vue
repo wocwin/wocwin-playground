@@ -1,4 +1,3 @@
-
 <template>
   <Header
     :store="store"
@@ -80,7 +79,7 @@ store.setImportMap({
   imports: {
     ...store.getImportMap().imports,
     'element-plus': CDN + `/element-plus@${version}/dist/index.full.mjs`,
-    't-ui-plus': CDN + `/t-ui-plus/index.mjs`,
+    '@wocwin/t-ui-plus': CDN + `/@wocwin/t-ui-plus/index.mjs`,
     '@element-plus/icons-vue': CDN + `/@element-plus/icons-vue/dist/index.js`
   }
 })
@@ -153,10 +152,10 @@ function toggleTheme(isDark: boolean) {
 
 //  修改版本
 const changePPCVersion = (v: string = 'latest') => {
-  const current = CDN + `/t-ui-plus@${v}`
+  const current = CDN + `/@wocwin/t-ui-plus@${v}`
 
   const link = current + `/index.css`
-  const code = TuiPlusTemplate.replace(CDN + '/t-ui-plus/index.css', link)
+  const code = TuiPlusTemplate.replace(CDN + '/@wocwin/t-ui-plus/index.css', link)
   const file = new File(PPC_FILE, code, import.meta.env.DEV)
   store.state.files[PPC_FILE] = file
   compileFile(store, file).then((errs: any) => (store.state.errors = errs))
@@ -181,7 +180,6 @@ onMounted(() => {
 })
 </script>
 
-
 <style>
 .dark {
   color-scheme: dark;
@@ -189,8 +187,9 @@ onMounted(() => {
 
 body {
   font-size: 13px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-    'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+    'Helvetica Neue', sans-serif;
   margin: 0;
   --base: #444;
   --nav-height: 50px;

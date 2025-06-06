@@ -42,7 +42,7 @@ async function fetchVersions(): Promise<string[]> {
     return filteredVersions
   } else if (props.pkg === 'typescript') {
     return versions.filter(v => !v.includes('dev') && !v.includes('insiders'))
-  } else if (props.pkg === 't-ui-plus') {
+  } else if (props.pkg === '@wocwin/t-ui-plus') {
     return versions.filter(v => !v.includes('alpha'))
   }
   return versions

@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
-import { TLayoutPage, TLayoutPageItem, TForm } from 't-ui-plus'
+// import { TLayoutPage, TLayoutPageItem, TForm } from '@wocwin/t-ui-plus'
 // 获取ref
 const TFormDemo: any = ref<HTMLElement | null>(null)
 // 提交formOpts.ref 方式form表单

@@ -1,5 +1,5 @@
 import { getCurrentInstance } from 'vue'
-import TuiPlus from 't-ui-plus'
+import TuiPlus from '@wocwin/t-ui-plus'
 import ElementPlus from 'element-plus'
 
 const version = '2.7.8'
@@ -27,7 +27,7 @@ export function setupTuiPlus() {
 
 export function loadStyle() {
   return new Promise((resolve, reject) => {
-    createLink(resolve, reject, 'https://unpkg.com/t-ui-plus/index.css')
+    createLink(resolve, reject, 'https://unpkg.com/@wocwin/t-ui-plus/index.css')
   })
 }
 

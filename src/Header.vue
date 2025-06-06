@@ -1,5 +1,3 @@
-
-
 <template>
   <nav>
     <h1>
@@ -9,7 +7,7 @@
     <div class="links">
       <VersionSelect
         :model-value="TuiPlusVersion"
-        pkg="t-ui-plus"
+        pkg="@wocwin/t-ui-plus"
         label="TuiPlus Version"
         @update:model-value="setTuiPlusVersion"
       />
@@ -28,10 +26,9 @@
           <a @click="resetVueVersion">This Commit ({{ currentCommit }})</a>
         </li>
         <li>
-          <a
-            href="https://app.netlify.com/sites/vue-sfc-playground/deploys"
-            target="_blank"
-          >Commits History</a>
+          <a href="https://app.netlify.com/sites/vue-sfc-playground/deploys" target="_blank"
+            >Commits History</a
+          >
         </li>
       </VersionSelect>
 
@@ -102,7 +99,7 @@ const TuiPlusVersion = ref('latest')
 function setTuiPlusVersion(v: string) {
   emit('changePPCVersion', v)
   store.state.dependencyVersion = {
-    't-ui-plus': v
+    '@wocwin/t-ui-plus': v
   }
   TuiPlusVersion.value = v
 }
@@ -135,7 +132,6 @@ function toggleDark() {
   emit('toggle-theme', cls.contains('dark'))
 }
 </script>
-
 
 <style>
 nav {
